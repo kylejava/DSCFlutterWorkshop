@@ -4,7 +4,14 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  var hello = " ";
   @override
   Widget build(BuildContext context) {
     return MaterialApp( //Material App
@@ -13,9 +20,18 @@ class MyApp extends StatelessWidget {
           title: Text("New Flutter App"),
         ),
         body: Center(
-          child: Text("Hello World"),
+          child: Text('$hello'),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            setState(() {
+              hello = "Hello World";
+            });
+          },
+          child: Icon(Icons.add_outlined),
         ),
       ),
+
     );
   }
 }
@@ -29,8 +45,6 @@ class MyApp extends StatelessWidget {
     Allows programmers to add basic widgets like an app bar, modify the body of the app
   - Center: widgets that places widgets in the middle of the page
   - Text: User's can add messeges in this widget
-
-
 
 
  */
