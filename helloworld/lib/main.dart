@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'dart:math';
 void main() {
   runApp(MyApp());
 }
@@ -11,7 +11,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var hello = " ";
+  var _colors = [Colors.red, Colors.blue, Colors.yellow, Colors.green, Colors.orange];
+  var i = 0;
   @override
   Widget build(BuildContext context) {
     return MaterialApp( //Material App
@@ -20,18 +21,20 @@ class _MyAppState extends State<MyApp> {
           title: Text("New Flutter App"),
         ),
         body: Center(
-          child: Text('$hello'),
+          child: Text("Hello World" ,
+            style: TextStyle(color: _colors[i] , fontSize: 25.0),
+          ),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             setState(() {
-              hello = "Hello World";
+              Random random = new Random();
+              i = random.nextInt(_colors.length);
             });
           },
           child: Icon(Icons.add_outlined),
         ),
       ),
-
     );
   }
 }
