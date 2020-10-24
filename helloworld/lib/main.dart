@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
+
 void main() {
   runApp(MyApp());
 }
+
 
 
 class MyApp extends StatefulWidget {
@@ -11,28 +12,29 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var _colors = [Colors.red, Colors.blue, Colors.yellow, Colors.green, Colors.orange];
-  var i = 0;
+  var _colors = [Colors.red,Colors.blue, Colors.yellow, Colors.green];
+  var index = 0;
+
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp( //Material App
+    return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("New Flutter App"),
+          title: Text('New Flutter App'),
         ),
         body: Center(
-          child: Text("Hello World" ,
-            style: TextStyle(color: _colors[i] , fontSize: 25.0),
+          child: Text('Hello World',
+            style: TextStyle(color: _colors[index%_colors.length] , fontSize: 25.0),
           ),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             setState(() {
-              Random random = new Random();
-              i = random.nextInt(_colors.length);
+              index++;
             });
           },
-          child: Icon(Icons.add_outlined),
+          child: Icon(Icons.add),
         ),
       ),
     );
@@ -48,6 +50,4 @@ class _MyAppState extends State<MyApp> {
     Allows programmers to add basic widgets like an app bar, modify the body of the app
   - Center: widgets that places widgets in the middle of the page
   - Text: User's can add messeges in this widget
-
-
  */
